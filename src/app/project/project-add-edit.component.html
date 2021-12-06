@@ -1,0 +1,40 @@
+﻿<div class="card">
+    <h4 class="card-header">Cadastro de Projeto</h4>
+    <div class="card-body">
+        <div [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" formControlName="nome" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"/>
+                <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+                    <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="url" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.url.errors }"/>
+                <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+                    <div *ngIf="f.url.errors.required">Url é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imagem">Imagem</label>
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.imagem.errors }"/>
+                <div *ngIf="submitted && f.imagem.errors" class="invalid-feedback">
+                    <div *ngIf="f.imagem.required">Username  é obrigatório</div>
+                </div>
+            </div>
+           <div class="form-group">
+                <button [disabled]="loading" style="margin:0 230px;" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Salvar
+                </button>
+                <button class="btn btn-danger" (click)="cancelar()">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
